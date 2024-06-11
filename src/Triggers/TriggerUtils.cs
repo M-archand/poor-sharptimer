@@ -71,7 +71,7 @@ namespace SharpTimer
                                 return(true, X);
                             }
                         }
-                        catch(Exception ex)
+                        catch (Exception)
                         {
                             return (true, X);
                         }
@@ -230,7 +230,7 @@ namespace SharpTimer
                                 return (true, X);
                             }
                         }
-                        catch(Exception ex)
+                        catch (Exception)
                         {
                             if (X != playerTimers[playerSlot].BonusStage) return (false, 0);
                             return (true, X);
@@ -459,7 +459,7 @@ namespace SharpTimer
                                         bonusPosAndAngSet = true;
                                     }
                                 }
-                                catch(Exception ex)
+                                catch (Exception)
                                 {
                                     bonusRespawnPoses[bonusX] = info_tp.CBodyComponent.SceneNode.AbsOrigin;
                                     bonusRespawnAngs[bonusX] = info_tp.AbsRotation;
@@ -483,7 +483,7 @@ namespace SharpTimer
                                 SharpTimerDebug($"Added Bonus !rb {bonusX} pos {bonusRespawnPoses[bonusX]}");
                             }
                         }
-                        catch(Exception ex)
+                        catch (Exception)
                         {
                             bonusRespawnPoses[bonusX] = trigger.CBodyComponent.SceneNode.AbsOrigin;
                             SharpTimerDebug($"Added Bonus !rb {bonusX} pos {bonusRespawnPoses[bonusX]}");
