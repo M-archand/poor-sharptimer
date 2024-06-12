@@ -69,22 +69,25 @@ namespace SharpTimer
                                                                             : playerSpeed.Length())
                                                                             .ToString("0000");
                         int playerVel = int.Parse(formattedPlayerVel);
-                        string secondaryHUDcolor;
+                        
+                        string secondaryHUDcolorDynamic = "LightBlue"; // Initialize with a default value
 
-                        if (playerVel < 800)
-                            secondaryHUDcolor = "LightBlue";
+                        if (playerVel < 750)
+                            secondaryHUDcolorDynamic = "LightBlue";
                         else if (playerVel < 1500)
-                            secondaryHUDcolor = "Aqua";
+                            secondaryHUDcolorDynamic = "Aqua";
                         else if (playerVel < 2000)
-                            secondaryHUDcolor = "Lime";
+                            secondaryHUDcolorDynamic = "Lime";
                         else if (playerVel < 2500)
-                            secondaryHUDcolor = "Yellow";
+                            secondaryHUDcolorDynamic = "Yellow";
                         else if (playerVel < 3000)
-                            secondaryHUDcolor = "Orange";
+                            secondaryHUDcolorDynamic = "Orange";
                         else if (playerVel < 3500)
-                            secondaryHUDcolor = "LightRed";
+                            secondaryHUDcolorDynamic = "LightRed";
                         else
                             secondaryHUDcolor = "Red";
+                        
+                        string playerVelColor = useDynamicColor ? secondaryHUDcolorDynamic : secondaryHUDcolor;
                         string formattedPlayerPre = Math.Round(ParseVector(playerTimer.PreSpeed ?? "0 0 0").Length2D()).ToString("000");
                         string playerTime = FormatTime(timerTicks);
                         string playerBonusTime = FormatTime(playerTimer.BonusTimerTicks);
@@ -96,7 +99,7 @@ namespace SharpTimer
                                                     ? $" <font class='horizontal-center' color='red'>◉ REPLAY {FormatTime(playerReplays[playerSlot].CurrentPlaybackFrame)}</font> <br>"
                                                     : "";
 
-                        string veloLine = $" {(playerTimer.IsTester ? playerTimer.TesterSmolGif : "")}<font class='fontSize-s stratum-bold-italic' color='{tertiaryHUDcolor}'>Speed:</font> {(playerTimer.IsReplaying ? "<font class=''" : "<font class='fontSize-l horizontal-center'")} color='{secondaryHUDcolor}'>{formattedPlayerVel}</font><font class='fontSize-s stratum-bold-italic' color='{tertiaryHUDcolor}'> u/s</font> <font class='fontSize-s stratum-bold-italic' color='gray'>({formattedPlayerPre} u/s)</font>{(playerTimer.IsTester ? playerTimer.TesterSmolGif : "")} <br>";
+                        string veloLine = $" {(playerTimer.IsTester ? playerTimer.TesterSmolGif : "")}<font class='fontSize-s stratum-bold-italic' color='{tertiaryHUDcolor}'>Speed:</font> {(playerTimer.IsReplaying ? "<font class=''" : "<font class='fontSize-l horizontal-center'")} color='{playerVelColor}'>{formattedPlayerVel}</font><font class='fontSize-s stratum-bold-italic' color='{tertiaryHUDcolor}'> u/s</font> <font class='fontSize-s stratum-bold-italic' color='gray'>({formattedPlayerPre} u/s)</font>{(playerTimer.IsTester ? playerTimer.TesterSmolGif : "")} <br>";
                         string infoLine = !playerTimer.IsReplaying
                                             ? $"<font class='fontSize-s stratum-bold-italic' color='gray'>🏆 {playerTimer.CachedPB} " + $"({playerTimer.CachedMapPlacement}) | </font>" + $"{playerTimer.RankHUDIcon} <font class='fontSize-s stratum-bold-italic' color='gray'>" +
                                               $"{(currentMapTier != null ? $" | Tier: {currentMapTier}" : "")}" +

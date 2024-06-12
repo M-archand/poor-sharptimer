@@ -51,6 +51,7 @@ namespace SharpTimer
         public string msgPrefix = $" {ChatColors.Green}[SharpTimer]{ChatColors.White} ";
         public string primaryHUDcolor = "green";
         public string secondaryHUDcolor = "orange";
+        public bool useDynamicColor = false;
         public string tertiaryHUDcolor = "white";
         public string primaryChatColor = "";
         public char NewLine = '\u2029';
