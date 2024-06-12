@@ -68,6 +68,23 @@ namespace SharpTimer
                         string formattedPlayerVel = Math.Round(use2DSpeed ? playerSpeed.Length2D()
                                                                             : playerSpeed.Length())
                                                                             .ToString("0000");
+                        int playerVel = int.Parse(formattedPlayerVel);
+                        string secondaryHUDcolor;
+
+                        if (playerVel < 800)
+                            secondaryHUDcolor = "LightBlue";
+                        else if (playerVel < 1500)
+                            secondaryHUDcolor = "Aqua";
+                        else if (playerVel < 2000)
+                            secondaryHUDcolor = "Lime";
+                        else if (playerVel < 2500)
+                            secondaryHUDcolor = "Yellow";
+                        else if (playerVel < 3000)
+                            secondaryHUDcolor = "Orange";
+                        else if (playerVel < 3500)
+                            secondaryHUDcolor = "LightRed";
+                        else
+                            secondaryHUDcolor = "Red";
                         string formattedPlayerPre = Math.Round(ParseVector(playerTimer.PreSpeed ?? "0 0 0").Length2D()).ToString("000");
                         string playerTime = FormatTime(timerTicks);
                         string playerBonusTime = FormatTime(playerTimer.BonusTimerTicks);
