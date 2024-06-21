@@ -70,22 +70,30 @@ namespace SharpTimer
                                                                             .ToString("0000");
                         int playerVel = int.Parse(formattedPlayerVel);
                         
-                        string secondaryHUDcolorDynamic = "LightBlue"; // Initialize with a default value
+                        string secondaryHUDcolorDynamic = "LimeGreen"; // Initialize with a default value
 
-                        if (playerVel < 750)
-                            secondaryHUDcolorDynamic = "LightBlue";
-                        else if (playerVel < 1500)
-                            secondaryHUDcolorDynamic = "Aqua";
-                        else if (playerVel < 2000)
+                        if (playerVel < 349)
+                            secondaryHUDcolorDynamic = "LimeGreen";
+                        else if (playerVel < 699)
                             secondaryHUDcolorDynamic = "Lime";
-                        else if (playerVel < 2500)
+                        else if (playerVel < 1049)
+                            secondaryHUDcolorDynamic = "GreenYellow";
+                        else if (playerVel < 1399)
                             secondaryHUDcolorDynamic = "Yellow";
-                        else if (playerVel < 3000)
+                        else if (playerVel < 1749)
+                            secondaryHUDcolorDynamic = "Gold";
+                        else if (playerVel < 2099)
                             secondaryHUDcolorDynamic = "Orange";
-                        else if (playerVel < 3500)
-                            secondaryHUDcolorDynamic = "LightRed";
+                        else if (playerVel < 2449)
+                            secondaryHUDcolorDynamic = "DarkOrange";
+                        else if (playerVel < 2799)
+                            secondaryHUDcolorDynamic = "Tomato";
+                        else if (playerVel < 3149)
+                            secondaryHUDcolorDynamic = "OrangeRed";
+                        else if (playerVel < 3499)
+                            secondaryHUDcolorDynamic = "Red";
                         else
-                            secondaryHUDcolor = "Red";
+                            secondaryHUDcolor = "Crimson";
                         
                         string playerVelColor = useDynamicColor ? secondaryHUDcolorDynamic : secondaryHUDcolor;
                         string formattedPlayerPre = Math.Round(ParseVector(playerTimer.PreSpeed ?? "0 0 0").Length2D()).ToString("000");
